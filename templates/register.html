@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <!-- HERO LOGO -->
+    <div class="section topSection">
+        <div id="isilLogoTitle">
+            <img id="isilLogo" src="/static/ISIL_Logo_Lockup_Cropped.png">
+        </div>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <!-- REGISTRATION FORM: ENTER USERNAME + PASSWORD + CONFIRM PASSWORD + ZIPCODE -->
+    <form class="container" id="registrationForm" action="/register" method="post">
+        <div class="container">
+            <img id="concertIcon" src="/static/concert.png">
+        </div>
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control registrationInput" name="username" placeholder="Username" type="text" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" class="form-control registrationInput" name="password" placeholder="Password" type="password" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" class="form-control registrationInput" name="confirmation" placeholder="Re-Type Password" type="password" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control registrationInput" name="zip_code" placeholder="Zip Code" type="text" required>
+        </div>
+            <button class="btn btn-primary mb-3 stylizedButton" type="submit" value="Register">REGISTER</button>
+    </form>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- HIDE REGISTER LINK IN NAVBAR -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#registrationNav').hide();
+        });
+    </script>
+{% endblock %}

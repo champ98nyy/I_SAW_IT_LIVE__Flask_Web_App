@@ -1,0 +1,585 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ userInfo["username"] }}'s Experience
+{% endblock %}
+
+{% block main %}
+    <div class="container p-2">
+        <div class="section topSection">
+            <h2 class="pgTitle">{{ userInfo["username"] }}'s <span class="isilWordmark">ISIL </span>EXPERIENCE DASHBOARD</h2>
+        </div>
+    </div>
+
+    <!-- ALL STATISTICS SECTION -->
+    <div class="container p-2">
+
+        <!-- CONCERTS SECTION TITLE -->
+        <div class= "my-3">
+            <i class="bi bi-calendar-month fs-1 align-middle blackberry pe-2 d-inline"></i>
+            <h5 class="statCategory d-inline">MILESTONE DATES</h5>
+        </div>
+
+        <!-- CONCERTS CARD CONTAINER -->
+        <div class="d-flex flex-wrap justify-content-evenly mb-5 cardContainer">
+
+            <!-- CONCERTS CARDS -->
+            <!-- 1ST CONCERT CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">1ST CONCERT</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value names mb-3 lightGlow">{{ userStats.firstShow.date }}</h5>
+                        <h5 class="dot"></h5>
+                        {% for artist in userStats.firstShow.artists %}
+                            <h5 class="card-text-value names m-0 lightGlow">{{ artist }}</h5>
+                        {% endfor %}
+                        <h5 class="dot"></h5>
+                        <div class="statsDiv mt-3">
+                            <h5 class="card-text-value names m-0 lightGlow">{{ userStats.firstShow.venue }}</h5>
+                            <h5 class="card-text-value names m-0 lightGlow">{{ userStats.firstShow.city }}, {{ userStats.firstShow.state }}</h5>
+                            <h5 class="card-text-value names m-0 lightGlow">{{ userStats.firstShow.country }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIME SINCE 1ST CONCERT CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-title2Line">TIME SINCE<br>FIRST CONCERT</h3>
+                    <div class="stats">
+                        {% if userStats.sinceFirstShow.years > 0 %}
+                            <h5 class="card-text-value names"><span class="number">{{ userStats.sinceFirstShow.years }}</span class="lightGlow"> YEARS</h5>
+                            <h5 class="card-text-value names"><span class="number">{{ userStats.sinceFirstShow.days }}</span class="lightGlow"> DAYS</h5>
+                        {% else %}
+                            <h5 class="card-text-value names"><span class="number">{{ userStats.sinceFirstShow.days }} DAYS</span></h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOST RECENT CONCERT CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">MOST RECENT CONCERT</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value names lightGlow">{{ userStats.lastShow.date }}</h5>
+                        <h5 class="dot"></h5>
+                        {% for artist in userStats.lastShow.artists %}
+                            <h5 class="card-text-value names m-0 lightGlow">{{ artist }}</h5>
+                        {% endfor %}
+                        <h5 class="dot"></h5>
+                        <div class="statsDiv mt-3">
+                            <h5 class="card-text-value names m-0 lightGlow">{{ userStats.lastShow.venue }}</h5>
+                            <h5 class="card-text-value names m-0 lightGlow">{{ userStats.lastShow.city }}, {{ userStats.lastShow.state }}</h5>
+                            <h5 class="card-text-value names m-0 lightGlow">{{ userStats.lastShow.country }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIME SINCE MOST RECENT CONCERT CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-title2Line">TIME SINCE<br>LAST CONCERT</h3>
+                    <div class="stats">
+                        {% if userStats.sinceLastShow.years > 0 %}
+                            <h2 class="card-text-value names"><span class="number">{{ userStats.sinceLastShow.years }}</span> <span class="lightGlow">YEARS</span></h2>
+                            <h2 class="card-text-value names"><span class="number">{{ userStats.sinceLastShow.days }}</span> <span class="lightGlow">DAYS</span></h2>
+                        {% else %}
+                            <h2 class="card-text-value names"><span class="number">{{ userStats.sinceLastShow.days }}</span> <span class="lightGlow">DAYS</span></h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PERFORMANCES + ARTISTS SECTION TITLE -->
+        <div class= "my-3">
+            <img id="musicianIcon" class="d-inline align-middle me-1 statIcon" src="/static/musician.png">
+            <h5 class="statCategory d-inline">PERFORMANCES + ARTISTS</h5>
+        </div>
+
+        <!-- PERFORMANCES + ARTISTS DEFINITIONS -->
+        {% if userStats.concertsAttended != 0 %}
+            <div class="footnote mb-4 mt-2 mx-auto p0 text-start">
+                <p class="m-0 pb-1">* <span class="blackberry">Performance: </span>A set of 1 (or more) Songs performed by an Artist at a Concert</p>
+                <p class="m-0 pb-1">* <span class="blackberry">Concert: </span>1 (or more) Performance(s) by 1 (or more) Artist(s) (e.g. Performance by Opening Act + Performance by Headliner = 1 Concert)</p>
+                <p class="m-0">* <span class="blackberry">Unique Artist: </span>A band or individual performer whom you have seen perform at 1 (or more) concert(s)</p>
+            </div>
+        {% endif %}
+
+        <!-- PERFORMANCES + ARTISTS CARD CONTAINER -->
+        <div class="d-flex flex-wrap justify-content-evenly mb-5 cardContainer">
+
+            <!-- PERFORMANCES CARDS -->
+            <!-- TOTAL CONCERTS ATTENDED CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">CONCERTS ATTENDED</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.concertsAttended }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOTAL PERFORMANCES SEEN CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">PERFORMANCES SEEN</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.totalPerformances }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTISTS CARDS-->
+            <!-- TOTAL UNIQUE ARTISTS SEEN CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">UNIQUE ARTISTS SEEN</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.artistsSeenQty }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOP 5 ARTISTS SEEN CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-titleButton">TOP 5<br>ARTISTS SEEN</h3>
+                    <div class="stats text-start">
+                        <div class="d-flex justify-content-between align-middle">
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow">ARTIST</div>
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow"><span class="blackberry ps-1 blackberryGlow">QTY</span></div>
+                        </div>
+                        {% for key, value in userStats.artistsSeenTop5 %}
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-text-value names namesTop5 pe-3 lightGlow">{{ key }}</h5>
+                                <h5 class="card-text-value names namesTop5"><span class="blackberry blackberryGlow">{{ value }}</span></h5>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- OFFCANVAS TOGGLE BUTTON -->
+                    <!-- NOT NEEDED IF USER HAS SEEN 5 OR LESS UNIQUE ARTISTS -->
+                    {% if userStats.artistsSeenQty > 5 %}
+                    <div class="card-footer">
+                        <!-- CALCULATE HOW MANY MORE RESULTS APPEAR IN OFF-CANVAS -->
+                        <!-- DYNAMICALLY DISPLAY TOTAL ON BUTTON -->
+                        <button class="btn btn-sm btn-light stylizedButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasArtists" aria-controls="offcanvasArtists">
+                            {{ userStats.artistsSeenQty - 5 }} MORE
+                        </button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- SONGS SECTION TITLE -->
+        <div class= "my-3">
+            <img id="singIcon" class="d-inline align-middle me-1 statIcon" src="/static/sing.png">
+            <h5 class="statCategory d-inline">SONGS</h5>
+        </div>
+
+        <!-- SONGS DEFINITIONS -->
+        <div class="footnote mb-4 mt-2 mx-auto p0 text-start">
+            <p class="m-0 pb-1">* <span class="blackberry">Total Songs: </span>Total quantity of songs heard at 1 (or more) concert(s), including repeats</p>
+            <p class="m-0 pb-1">* <span class="blackberry">Unique Songs: </span>Total quantity of songs heard at 1 (or more) concert(s), excluding repeats</p>
+            {% if userStats.noSetListShows != 0 %}
+                <p class="m-0">* Song Stats don't include songs from <span class="blackberry">{{ userStats.noSetListShows }}</span> / <span class="blackberry">{{ userStats.totalPerformances }}</span> performances seen, which don't have setlist information</p>
+            {% endif %}
+        </div>
+
+        <!-- SONGS CARD CONTAINER -->
+        <div class="d-flex flex-wrap justify-content-evenly mb-5 cardContainer">
+
+            <!-- SONGS CARDS -->
+            <!-- TOTAL SONGS HEARD CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Total quantity of songs heard at 1 (or more) concert(s), including repeats">TOTAL SONGS HEARD</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.songsHeardLiveQty }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOTAL UNIQUE SONGS HEARD CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Total quantity of songs heard at 1 (or more) concert(s), excluding repeats">UNIQUE SONGS HEARD</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.uniqueSongsQty }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOTAL ENCORE SONGS HEARD CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-title2Line">SONGS HEARD<br>AS ENCORES</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.encoreSongsHeardLiveQty }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOTAL UNIQUE ENCORE SONGS HEARD CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-title2Line">UNIQUE SONGS<br>HEARD AS ENCORES</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.uniqueEncoreSongsQty }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOP 5 SONGS HEARD CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-titleButton">TOP 5<br>SONGS HEARD</h3>
+                    <div class="stats text-start">
+                        <div class="d-flex justify-content-between align-middle">
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow">"TITLE", ARTIST</div>
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow"><span class="blackberry ps-2 blackberryGlow">QTY</span></div>
+                        </div>
+                        {% for i in userStats.songsHeardTop5 %}
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-text-value names namesTop5 pe-2 lightGlow">"{{ i.song }}", {{ i.artist }}</h5>
+                                <h5 class="card-text-value names namesTop5"><span class="blackberry blackberryGlow">{{ i.qty }}</span></h5>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- OFFCANVAS TOGGLE BUTTON -->
+                    <!-- NOT NEEDED IF USER HAS HEARD 5 OR LESS SONGS -->
+                    {% if userStats.uniqueSongsQty > 5 %}
+                    <div class="card-footer">
+                        <!-- CALCULATE HOW MANY MORE RESULTS APPEAR IN OFF-CANVAS -->
+                        <!-- DYNAMICALLY DISPLAY TOTAL ON BUTTON -->
+                        <button class="btn btn-sm btn-light stylizedButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSongs" aria-controls="offcanvasSongs">
+                            {{ userStats.uniqueSongsQty - 5 }} MORE
+                        </button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- TOP 5 ENCORE SONGS HEARD CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-titleButton">TOP 5 SONGS<br>HEARD AS ENCORES</h3>
+                    <div class="stats text-start">
+                        <div class="d-flex justify-content-between align-middle">
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow">"TITLE", ARTIST</div>
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow"><span class="blackberry ps-2 blackberryGlow">QTY</span></div>
+                        </div>
+
+                        {% for i in userStats.encoreSongsHeardTop5 %}
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-text-value names namesTop5 pe-2 lightGlow">"{{ i.encoreSong }}", {{ i.artist }}</h5>
+                                <h5 class="card-text-value names namesTop5"><span class="blackberry blackberryGlow">{{ i.qty }}</span></h5>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- OFFCANVAS TOGGLE BUTTON -->
+                    <!-- NOT NEEDED IF USER HAS HEARD 5 OR LESS ENCORE SONGS -->
+                    {% if userStats.uniqueEncoreSongsQty > 5 %}
+                    <div class="card-footer">
+                        <!-- CALCULATE HOW MANY MORE RESULTS APPEAR IN OFF-CANVAS -->
+                        <!-- DYNAMICALLY DISPLAY TOTAL ON BUTTON -->
+                        <button class="btn btn-sm btn-light stylizedButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEncoreSongs" aria-controls="offcanvasEncoreSongs">
+                            {{ userStats.uniqueEncoreSongsQty - 5 }} MORE
+                        </button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- LOCATIONS SECTION TITLE -->
+        <div class= "my-3">
+            <img id="locationIcon" class="d-inline align-middle me-1 statIcon" src="/static/location.png">
+            <h5 class="statCategory d-inline">LOCATIONS</h5>
+        </div>
+
+        <!-- LOCATIONS CARD CONTAINER -->
+        <div class="d-flex flex-wrap justify-content-evenly mb-5 cardContainer">
+
+            <!-- LOCATIONS CARDS -->
+            <!-- LOCATIONS EXPLORED CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">LOCATIONS EXPLORED</h3>
+                    <div class="stats text-start">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-text-value names pe-3 lightGlow">Cities</h5>
+                            <h5 class="card-text-value names ps-3 lightGlow"><span class="blackberry blackberryGlow">{{ userStats.citiesVisitedQty }}</span></h5>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-text-value names pe-3 lightGlow">States</h5>
+                            <h5 class="card-text-value names ps-3 lightGlow"><span class="blackberry blackberryGlow">{{ userStats.statesVisitedQty }}</span></h5>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-text-value names pe-3 lightGlow">Countries</h5>
+                            <h5 class="card-text-value names ps-3 lightGlow"><span class="blackberry blackberryGlow">{{ userStats.countriesVisitedQty }}</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIQUE VENUES VISITED CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">UNIQUE VENUES VISITED</h3>
+                    <div class="stats">
+                        <h5 class="card-text-value number">{{ userStats.venuesVisitedQty }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOP 5 VENUES VISITED CARD -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title card-titleButton">TOP 5<br>VENUES VISITED</h3>
+                    <div class="stats text-start">
+                        <div class="d-flex justify-content-between align-middle">
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow">VENUE</div>
+                            <div class="text-center names namesTop5 mb-3 fw-bold lightGlow"><span class="blackberry ps-2 blackberryGlow">QTY</span></div>
+                        </div>
+                        {% for key, value in userStats.venuesVisitedTop5 %}
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-text-value names namesTop5 pe-3 lightGlow">{{ key }}</h5>
+                            <h5 class="card-text-value names namesTop5"><span class="blackberry ps-1 blackberryGlow">{{ value }}</span></h5>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- OFFCANVAS TOGGLE BUTTON -->
+                    <!-- NOT NEEDED IF USER HAS VISITED 5 OR LESS VENUES -->
+                    {% if userStats.venuesVisitedQty > 5 %}
+                    <div class="card-footer">
+                        <!-- CALCULATE HOW MANY MORE RESULTS APPEAR IN OFF-CANVAS -->
+                        <!-- DYNAMICALLY DISPLAY TOTAL ON BUTTON -->
+                        <button class="btn btn-sm btn-light stylizedButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasVenuesVisited" aria-controls="offcanvasVenuesVisited">
+                            {{ userStats.venuesVisitedQty - 5 }} MORE
+                        </button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALL OFF-CANVASES -->
+    <!-- ALL ARTISTS SEEN OFF-CANVASES -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasArtists" aria-labelledby="offcanvasArtistsLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasArtistsLabel">ALL ARTISTS SEEN</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body container">
+            <div class="stats">
+                <div class="d-flex justify-content-between align-middle">
+                    <div class="text-center names namesTop5 mb-3 fw-bold">ARTIST</div>
+                    <div class="text-center names namesTop5 mb-3 fw-bold"><span class="blackberry ps-2">QTY</span></div>
+                </div>
+                {% for key, value in userStats.artistsSeen.items() %}
+                    <div class="d-flex justify-content-between border-top separator align-middle">
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-3 pb-3 pt-3">{{ key }}</h5>
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-3 pb-3 pt-3"><span class="blackberry">{{ value }}</span></h5>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="dropdown mt-3">
+                <p>Missing anyone from this list? Search for additional concerts to add to your <span class="isilWordmark">ISIL</span> History.</p>
+
+                <a href="/search" class="btn btn-sm btn-light stylizedButton" target=_self>
+                    SEARCH
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALL SONGS HEARD OFF-CANVASES -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasSongs" aria-labelledby="offcanvasSongsLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasSongsLabel">ALL SONGS HEARD</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body container">
+            <div class="stats">
+                <div class="d-flex justify-content-between align-middle">
+                    <div class="text-center names namesTop5 mb-3 fw-bold">"TITLE", ARTIST</div>
+                    <div class="text-center names namesTop5 mb-3 fw-bold"><span class="blackberry ps-2">QTY</span></div>
+                </div>
+                {% for i in userStats.songsHeard %}
+                    <div class="d-flex justify-content-between border-top separator align-middle">
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-3 pb-3 pt-3">"{{ i.song }}", {{ i.artist }}</span></h5>
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-3 pb-3 pt-3"><span class="blackberry">{{ i.qty }}</span></h5>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="dropdown mt-3">
+                <p>Missing any songs from this list? Search for additional concerts to add to your Experience.</p>
+
+                <a href="/search" class="btn btn-secondary stylizedButton" target=_self>
+                    SEARCH
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALL ENCORE SONGS HEARD OFF-CANVASES -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasEncoreSongs" aria-labelledby="offcanvasEncoreSongsLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasEncoreSongsLabel">ALL SONGS HEARD AS ENCORES</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body container">
+            <div class="stats">
+                <div class="d-flex justify-content-between align-middle">
+                    <div class="text-center names namesTop5 mb-3 fw-bold">"TITLE", ARTIST</div>
+                    <div class="text-center names namesTop5 mb-3 fw-bold"><span class="blackberry ps-2">QTY</span></div>
+                </div>
+                {% for i in userStats.encoreSongs %}
+                    <div class="d-flex justify-content-between border-top separator align-middle">
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-3 pb-3 pt-3">"{{ i.encoreSong }}", {{ i.artist }}</h5>
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-1 pb-3 pt-3"><span class="blackberry">{{ i.qty }}</span></h5>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="dropdown mt-3">
+                <p>Missing any songs from this list? Search for additional concerts to add to your Experience.</p>
+
+                <a href="/search" class="btn btn-secondary stylizedButton" target=_self>
+                    SEARCH
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALL VENUES VISITED OFF-CANVASES -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasVenuesVisited" aria-labelledby="offcanvasVenuesVisitedLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasVenuesVisitedLabel">ALL VENUES VISITED</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body container">
+            <div class="stats">
+                <div class="d-flex justify-content-between align-middle">
+                    <div class="text-center names namesTop5 mb-3 fw-bold">VENUE</div>
+                    <div class="text-center names namesTop5 mb-3 fw-bold"><span class="blackberry ps-2">QTY</span></div>
+                </div>
+                {% for key, value in userStats.venuesVisited.items() %}
+                    <div class="d-flex justify-content-between border-top separator align-middle">
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-3 pb-3 pt-3">{{ key }}</h5>
+                        <h5 class="card-text-value names offcanvas-text m-0 pe-3 pb-3 pt-3"><span class="blackberry">{{ value }}</span></h5>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="dropdown mt-3">
+                <p>Missing any venues from this list? Search for additional concerts to add to your Experience.</p>
+
+                <a href="/search" class="btn btn-secondary stylizedButton" target=_self>
+                    SEARCH
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETLIST MODAL -->
+    <!-- CONTENT GENERATED DYNAMICALLY FROM DATA ATTRIBUTES -->
+    <div class="modal .modal-lg fade" id="setlistModal" tabindex="-1" aria-labelledby="setlistModalLabel" aria-modal="true" role="dialog">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--<h5 class="modal-title"></h5>-->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"&times; aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center;" class="setlistImage">
+                        <a id="setlistReferenceUrl" href="tbd" title="tbd" target="_blank">
+                        <img id="setlistImage" src="tbd" alt="tbd" style="border: 0;">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <!--<p>Add show to your history</p>-->
+                        <form id="addShow" action="/addShow" method="post">
+                            <input id="hiddenSetlistId" type="hidden" name="setlistId" value="tbd">
+                            <input id="hiddenDate" type="hidden" name="date" value="tbd">
+                            <button id="addShowButton" type="submit" class="btn btn-primary" label="Add to your experience">I SAW IT LIVE!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <!-- POPPER: NEEDED FOR TOOLTIPS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <script>
+        // Dynamically change Modal content to correspond with button for every concert setlist
+        // Select the Setlist Modal and add an Event Listener for when it's opened
+        var myModal = document.getElementById('setlistModal');
+        myModal.addEventListener('show.bs.modal', function(event) {
+
+            // When the button is clicked to open a modal, store the corresponding URL, setlist URL, Concert Id, Artist, Date, Venue for that show
+            var button = event.relatedTarget;
+            var url = button.getAttribute('data-bs-url');
+            var setlistUrl = button.getAttribute('data-bs-setlistUrl');
+            var setlistId = button.getAttribute('data-bs-setlistId');
+            var artist = button.getAttribute('data-bs-artist');
+            var venue = button.getAttribute('data-bs-venue');
+            var date = button.getAttribute('data-bs-date');
+            var addShowButton = document.getElementById("addShowButton");
+            var hiddenSetlistId = document.getElementById('hiddenSetlistId');
+            var hiddenDate = document.getElementById('hiddenDate');
+
+            // Change the src URL and alt values of the setlist image to change the content displayed in the image
+            // URL formula always starts out the same way. The only modification is adding the corresponding Concert Id to the end of the URL
+            var setlistImage = document.getElementById('setlistImage');
+            var setlistImageUrl = setlistUrl;
+
+            // Change the <a href URL and title values to change the target if a user clicks on the setlist image
+            var setlistReferenceUrl = document.getElementById('setlistReferenceUrl');
+
+            // Modify the img src + alt with the corresponding URL + alt description. Store concertId in element
+            setlistImage.setAttribute('src', setlistUrl);
+            setlistImage.setAttribute('alt', artist + " Setlist " + venue + " " + date);
+            setlistImage.setAttribute('data-bs-setlistId', setlistId);
+
+            // Modify the a href + title with the corresponding URL + title
+            setlistReferenceUrl.setAttribute('href', url);
+            setlistReferenceUrl.setAttribute('title', artist + " " + venue + " " + date);
+
+            // Add concertId data to the addShowButton to be used in application.py
+            hiddenSetlistId.setAttribute('value', setlistId);
+            hiddenDate.setAttribute('value', date);
+        });
+    </script>
+
+    <script>
+        // Hide My Experience Link in Nav
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#experienceNav').hide();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <!-- HERO LOGO -->
+    <div class="section topSection">
+        <div id="isilLogoTitle">
+            <img id="isilLogo" src="/static/ISIL_Logo_Lockup_Cropped.png">
+        </div>
+
+        <!-- DYNAMIC USERNAME GREETING + MEMBER SINCE DATE -->
+        <div id="memberSince">
+            <p>WELCOME BACK {{ userInfo["username"] }}!</p>
+            <p><span class="isilWordmark">ISIL </span>MEMBER SINCE: <span id="memberSinceDate blackberry">{{ userInfo.memberSince }}</span></p>
+        </div>
+    </div>
+
+    <!-- HIGH-LEVEL STATS -->
+    <div id="statsOverview" class="d-flex flex-row justify-content-center mt-5 mb-4">
+        <div class="d-flex flex-column justify-content-center">
+            <div id="statsOverviewConcerts" class="statsOverviewBox mx-2 d-flex flex-column justify-content-center">
+                <h5 class="fs-1 blackberryGlow mt-3 align-self-center">{{ statsOverview["allConcertsQty"] }}</h5>
+                <div class="statsOverviewLabel blackberry">CONCERTS</div>
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+            <div id="statsOverviewArtists" class="statsOverviewBox mx-2 d-flex flex-column justify-content-center">
+                <h5 class="fs-1 blackberryGlow mt-3 align-self-center">{{ statsOverview["allArtistsQty"] }}</h5>
+                <div class="statsOverviewLabel blackberry">ARTISTS</div>
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+            <div id="statsOverviewVenues" class="statsOverviewBox mx-2 d-flex flex-column justify-content-center">
+                <h5 class="fs-1 blackberryGlow mt-3 align-self-center">{{ statsOverview["allVenuesQty"] }}</h5>
+                <div class="statsOverviewLabel blackberry">VENUES</div>
+            </div>
+       </div>
+    </div>
+
+    <!-- CTA FOR EXPERIENCE DASHBOARD TO SEE MORE STATS -->
+    <!-- IF USER HAS NO STATS YET, CTA TO SEARCH FOR CONCERTS TO ADD -->
+    {% if statsOverview["allConcertsQty"] != 0 %}
+    <div id="dashboardCTAContainer" class="align d-flex justify-content-center">
+        <a class="text-decoration-none" href="/experience">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-graph-up-arrow d-inline blackberry me-2" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+            </svg>
+            <p id="dashboardCTA" class="d-inline align-bottom fw-bold indexCTA" onclick="loading()">MORE IN EXPERIENCE DASHBOARD</p>
+        </a>
+    </div>
+    {% else %}
+    <div id="searchCTAContainer" class="align d-flex justify-content-center">
+        <a class="text-decoration-none" href="/search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search blackberry me-2 blinking" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            <p id="searchCTA" class="d-inline align-bottom fw-bold indexCTA text-wrap">SEARCH FOR CONCERTS TO ADD TO YOUR HISTORY</p>
+        </a>
+    </div>
+    {% endif %}
+
+    <!-- SEARCHABLE/SORTABLE TABLE OF USER'S CONCERT HISTORY -->
+    <div class="section" id="historyTable-section">
+        <h2 class="pgTitle">{{ userInfo["username"] }}'s <span class="isilWordmark">ISIL </span>HISTORY</h2>
+        <table class = "table table-dark table-striped table-bordered table-hover table-responsive" id="allConcertsTable">
+            <thead>
+                <tr>
+                    <th>Date<svg class="sortArrows" xmlns="http://www.w3.org/2000/svg" class="bi bi-arrow-down-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/></svg></th>
+                    <th>Artist<svg class="sortArrows" xmlns="http://www.w3.org/2000/svg" class="bi bi-arrow-down-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/></svg></th>
+                    <th>Venue<svg class="sortArrows" xmlns="http://www.w3.org/2000/svg" class="bi bi-arrow-down-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/></svg></th>
+                    <th>Location<svg class="sortArrows" xmlns="http://www.w3.org/2000/svg" class="bi bi-arrow-down-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/></svg></th>
+                    <th><img src="/static/ISIL_White_on_Blackberry_32x32.ico"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through db entries to display in table -->
+                {% for concert in concerts %}
+                    <tr>
+                        <td id="toggler" data-bs-toggle="modal" data-bs-setlistId="{{ concert.setlistId }}" data-bs-url="{{ concert.url }}" data-bs-setlistUrl="{{ concert.setlistUrl }}" data-bs-artist="{{ concert.artist }}" data-bs-date="{{ concert.date2 }}" data-bs-venue="{{ concert.venue }}" data-bs-target="#setlistModal" data-sort="{{ concert.date }}">{{ concert.date2 }}</td>
+                        <td id="toggler" data-bs-toggle="modal" data-bs-setlistId="{{ concert.setlistId }}" data-bs-url="{{ concert.url }}" data-bs-setlistUrl="{{ concert.setlistUrl }}" data-bs-artist="{{ concert.artist }}" data-bs-date="{{ concert.date2 }}" data-bs-venue="{{ concert.venue }}" data-bs-target="#setlistModal">{{ concert.artist }}</td>
+                        <td id="toggler" data-bs-toggle="modal" data-bs-setlistId="{{ concert.setlistId }}" data-bs-url="{{ concert.url }}" data-bs-setlistUrl="{{ concert.setlistUrl }}" data-bs-artist="{{ concert.artist }}" data-bs-date="{{ concert.date2 }}" data-bs-venue="{{ concert.venue }}" data-bs-target="#setlistModal">{{ concert.venue }}</td>
+                        <td id="toggler" data-bs-toggle="modal" data-bs-setlistId="{{ concert.setlistId }}" data-bs-url="{{ concert.url }}" data-bs-setlistUrl="{{ concert.setlistUrl }}" data-bs-artist="{{ concert.artist }}" data-bs-date="{{ concert.date2 }}" data-bs-venue="{{ concert.venue }}" data-bs-target="#setlistModal">{{ concert.city }}, {{ concert.state }}, {{ concert.country }}</td>
+                        <td>
+                            <button id="removeShowButton" data-bs-toggle="modal" data-bs-target="#confirmRemovalModal" data-bs-setlistId="{{ concert.setlistId }}" type="button" class="btn btn-light btn-sm stylizedButton">REMOVE SHOW</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- REMOVE SHOW CONFIRMATION MODAL -->
+    <!-- TRIGGERED IF USER CLICKS A REMOVE SHOW BUTTON -->
+    <div class="modal .modal-sm fade" id="confirmRemovalModal" tabindex="-1" aria-labelledby="confirmRemovalLabel" aria-modal="true" role="dialog">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center;" class="tbd">
+                        <h5>Are you sure you'd like to remove this concert from your ISIL History?</h5>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <form id="removeShow" action="/removeShow" method="post">
+                            <input id="hiddenSetlistId2" type="hidden" name="setlistId" value="tbd">
+                            <button id="removeShowConfirmationButton" type="submit" class="btn btn-sm btn-dark stylizedButton">REMOVE SHOW</button>
+                            <button id="cancel" data-bs-dismiss="modal" type="button" class="btn btn-sm btn-dark stylizedButton" label="Cancel">CANCEL</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETLIST MODAL -->
+    <div class="modal .modal-lg fade" id="setlistModal" tabindex="-1" aria-labelledby="setlistModalLabel" aria-modal="true" role="dialog">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"&times; aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center;" class="setlistImage">
+                        <a id="setlistReferenceUrl" href="tbd" title="tbd" target="_blank">
+                        <img id="setlistImage" src="tbd" alt="tbd" style="border: 0;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- jQuery DATATABLES CUSTOM SETUP -->
+    <script>
+        $(document).ready(function() {
+            $('#allConcertsTable').DataTable( {
+                "responsive": true,
+                "lengthMenu": [ [25, 50, 100, -1], [25, 50, 100, "All"] ],
+                "processing": true,
+                "autoFill": true,
+                "order": [],
+                "language": {
+                    "search": "FILTER BY:",
+                    "searchPlaceholder": "e.g. New York, 2018"
+                }
+            });
+        });
+    </script>
+
+    <!-- DISPLAY SHOW REMOVAL CONFIRMATION MODAL -->
+    <!-- TRIGGERED IF USER CLICKS A REMOVE SHOW BUTTON -->
+    <script>
+        // Attach setlist Id to Show Removal Confirmation Modal, so if user confirms removal, setlist Id can be passed to /removeShow route
+        // Select the Show Removal Confirmation Modal and add an Event Listener for when it's opened
+        var myModal = document.getElementById('confirmRemovalModal');
+        myModal.addEventListener('show.bs.modal', function(event) {
+
+            // When the button is clicked to open the modal, store the corresponding setlist Id
+            var button = event.relatedTarget;
+            var setlistId = button.getAttribute('data-bs-setlistId');
+            console.log("SETLIST ID FROM BUTTON: ", setlistId)
+
+            // Add setlistId data to the hiddenSetlistId input to be used in application.py if removeShow form is submitted
+            hiddenSetlistId2.setAttribute('value', setlistId);
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <div id="errorPage" class="d-flex flex-column justify-content-center align-middle">
+        <div id="errorContainer" class="align-self-center">
+            <div id="apology" class="text-wrap">
+                <div class= "number blackberryGlow">{{ code }}</div>
+                <div class="names blackberryGlow">{{ message }}</div>
+            </div>
+            <button id="goBack" class="stylizedButton mt-5" onclick="history.back()">GO BACK</button>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- HIDE REGISTER LINK IN NAVBAR -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#registrationNav').hide();
+        });
+    </script>
+{% endblock %}

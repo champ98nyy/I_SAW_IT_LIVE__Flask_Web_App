@@ -1,0 +1,40 @@
+<!-- FULL SCREEN VIDEO BACKGROUND -->
+<video src="https://user-images.githubusercontent.com/78568826/151713617-2a4a5e8a-8e5f-4667-a9ad-f19769016f85.mov" autoplay loop playsinline muted></video>
+<div id="videoFilter"></div>
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+
+{% block main %}
+    <!-- MAIN PAGE CONTENT -->
+    <div id="searchContainer" class="topSection d-flex-row section align-items-stretch justify-content-center">
+
+        <h2 class="pgTitle" id="searchInstructionsHeader">ADD TO YOUR <span class="isilWordmark">ISIL </span>HISTORY</h1>
+
+        <p><span class="isilWordmark">I SAW IT LIVE </span>comes to life when you build out your personal history with the concerts you've seen live throughout your lifetime.</p>
+        <p class="searchInstructions">Just enter the name of an artist or band you've seen live to view a sortable/searchable list of their entire performance history. When you find a show you attended, click to add it to your <span class="isilWordmark">ISIL </span>History. Then check your stats in your Experience Dashboard or add another show.</p>
+
+        <form class="form-group mt-5 searchForm" action="/search" method="post" onsubmit="loading()">
+                <input autocomplete="off" autofocus required class="form-control" name="search" placeholder="Artist Name" type="text">
+                <button id="searchButton" class="btn btn-primary stylizedButton" type="submit">SEARCH</button>
+        </form>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        // Hide Search Link in Nav
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#searchNav').hide();
+        });
+    </script>
+
+    <script>
+        document.querySelector('video').playbackRate = .8;
+    </script>
+{% endblock %}

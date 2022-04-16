@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- STYLESHEETS -->
+
+        <!-- BOOTSTRAP CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <!-- ISIL CUSTOM CSS -->
+        <link href="/static/styles.css" rel="stylesheet">
+
+
+        <!-- ICONS -->
+
+        <!-- BOOTSTRAP ICONS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+        <!-- FAVICON -->
+        <link href="/static/ISIL_White_on_Blackberry_32x32.ico" rel="icon">
+
+
+        <!-- FONTS -->
+
+        <!-- GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Righteous&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+        <!-- JAVASCRIPT -->
+
+        <!-- BOOTSTRAP 5 JS BUNDLE -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <!-- JQUERY BUNDLE -->
+        <!-- NEEDED FOR DATATABLES -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+        <!-- jQuery DATATABLES PLUG-IN -->
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+
+
+
+        <title>I Saw It Live: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+        <!-- NAVIGATION -->
+        <nav class="navbar fixed-top navbar-expand-md navbar-light">
+            <a id="isilNavLogo" class="navbar-brand" href="/"><img id="homeButton" src="/static/ISIL_White_on_Blackberry_32x32.ico"></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler custom-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto">
+                        <li id="searchNav" class="nav-item"><a class="nav-link" href="/search">SEARCH</a></li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li id="experienceNav" class="nav-item"><a class="nav-link" href="/experience" onclick="loading()">EXPERIENCE DASHBOARD</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="/logout">LOG OUT</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto">
+                        <li id="registrationNav" class="nav-item"><a class="nav-link" href="/register">REGISTER</a></li>
+                        <li id="loginNav" class="nav-item"><a class="nav-link" href="/login">LOG IN</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        <!-- FLASHED MESSAGES -->
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-dismissible border text-center text-white" role="alert">
+                    <button type="button" class="btn-close align-self-stretch" data-dismiss="alert" aria-label="Close"></button>
+                    <!--<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <!-- MAIN CONTENT -->
+        <main class="container-fluid p-2">
+
+            <!-- RECORD PLAYER LOADING... -->
+            <div id="recordPlayerLoadingContainer" class="flex-column justify-content-flex-start align-items-center">
+                <div id="greatestHits" class="d-flex flex-row justify-content-center align-items-center">
+                    <div id="recordSleeve" class="align-self-center mx-auto">
+                        <div id="recordSleeveTitle">GREATEST HITS</div>
+                        <img id="recordSleeveLogo" src="/static/ISIL_White_on_Blackberry_192x192.png">
+                    </div>
+                    <div id="staticRecord" class="align-self-center mx-auto">
+                        <img id="isilRecord" src="/static/ISIL_Record_Static.png" alt="ISIL Record">
+                    </div>
+                </div>
+                <div id="recordPlayerQuote" class="d-flex flex-column flex-nowrap">
+                    <div id="recordPlayerLoader" class="container">
+                        <img id="spinningRecord" src="/static/ISIL-Record.gif" alt="Loading...">
+                        <div id="recordMat"><div id="spindle"></div></div>
+                        <div id="needleArm">
+                            <div id="needleArm1"></div>
+                            <div id="needleArm2"></div>
+                            <div id="needleArm3"></div>
+                            <div id="needleArm4"></div>
+                            <div id="needleArm5"></div>
+                            <div id="needleArm6"></div>
+                        </div>
+                        <div id=recordButtons>
+                            <div id="recordButtons1"></div>
+                            <div id="recordButtons2"></div>
+                            <div id="recordButtons3"></div>
+                            <div id="recordButtons4"></div>
+                            <div id="recordButtons5"></div>
+                            <div id="recordButtons6"></div>
+                            <div id="recordButtons7"></div>
+                            <div id="recordButtons8"></div>
+                            <div id="recordButtons9"></div>
+                        </div>
+                    </div>
+                    <div id="loaderQuote" class="mt-4">
+                        <h5 class="blackberryGlow">The waiting is the hardest part...</h5>
+                    </div>
+                </div>
+            </div>
+            {% block main %}
+            {% endblock %}
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-muted">
+            Source: <a href="https://www.setlist.fm" target="#">concert setlists on setlist.fm</a>
+            <div id="iconCreditFooter">Icons by <a href="https://www.flaticon.com/authors/pongsakornred" title="pongsakornRed">pongsakornRed</a>, <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </footer>
+    </body>
+</html>
+
+
+<!-- JAVASCRIPT FUNCTIONS -->
+<script>
+//Swap ISIL logo color Home Button on mouse hover
+    homeButton.addEventListener('mouseover', function() {
+        homeButton.src = '/static/ISIL_Blackberry_on_White_32x32.ico';
+    });
+
+    homeButton.addEventListener('mouseout', function() {
+        homeButton.src = '/static/ISIL_White_on_Blackberry_32x32.ico';
+    });
+</script>
+
+<!-- DISPLAY SETLIST MODAL -->
+<script>
+    // Dynamically change Modal content to correspond with button for every concert setlist
+    // Select the Setlist Modal and add an Event Listener for when it's opened
+    var myModal = document.getElementById('setlistModal');
+    myModal.addEventListener('show.bs.modal', function(event) {
+
+        // When the button is clicked to open a modal, store the corresponding URL, setlist URL, Setlist Id, Artist, Date, Venue for that show
+        var button = event.relatedTarget;
+        var url = button.getAttribute('data-bs-url');
+        var setlistUrl = button.getAttribute('data-bs-setlistUrl');
+        var setlistId = button.getAttribute('data-bs-setlistId');
+        var artist = button.getAttribute('data-bs-artist');
+        var venue = button.getAttribute('data-bs-venue');
+        var date = button.getAttribute('data-bs-date');
+        var addShowButton = document.getElementById("addShowConfirmationButton2");
+        var hiddenSetlistId = document.getElementById('hiddenSetlistId');
+        var hiddenDate = document.getElementById('hiddenDate');
+
+        // Change the src URL and alt values of the setlist image to change the content displayed in the image
+        // URL formula always starts out the same way. The only modification is adding the corresponding Concert Id to the end of the URL
+        var setlistImage = document.getElementById('setlistImage');
+        var setlistImageUrl = setlistUrl;
+
+        // Change the <a href URL and title values to change the target if a user clicks on the setlist image
+        var setlistReferenceUrl = document.getElementById("setlistReferenceUrl");
+
+        // Modify the img src + alt with the corresponding URL + alt description. Store concertId in element
+        setlistImage.setAttribute("src", setlistUrl);
+        setlistImage.setAttribute("alt", artist + " Setlist " + venue + " " + date);
+        setlistImage.setAttribute("data-bs-setlistId", setlistId);
+
+        // Modify the a href + title with the corresponding URL + title
+        setlistReferenceUrl.setAttribute("href", url);
+        setlistReferenceUrl.setAttribute("title", artist + " " + venue + " " + date);
+
+        // Add setlistId data to the addShowButton to be used in application.py
+        hiddenSetlistId.setAttribute("value", setlistId);
+        hiddenDate.setAttribute("value", date);
+        addShowButton.setAttribute("data-bs-setlistId", setlistId);
+
+    });
+</script>
+
+<script>
+    function loading() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        if (navigator.vendor != null && navigator.vendor.match(/Apple Computer, Inc./) && navigator.userAgent.match(/iPhone/i) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
+                recordPlayerLoadingContainer.style.display = 'flex';
+                spinningRecord.style.opacity = '1';
+        } else {
+            recordPlayerLoadingContainer.style.display = 'flex';
+            isilRecord.classList.add('putRecordOn');
+            spinningRecord.classList.add('spinningRecord');
+            recordSleeve.classList.add('disappear');
+            recordSleeveLogo.classList.add('disappear');
+            recordSleeveTitle.classList.add('disappear');
+            needleArm3.classList.add('needle3');
+            needleArm4.classList.add('needle4');
+            needleArm5.classList.add('needle5');
+            recordButtons7.classList.add('buttonTurn');
+            recordPlayerLoader.classList.add('recordPulse');
+            loaderQuote.classList.add('lyrics');
+        }
+    }
+</script>
+
+<script>
+    function hideLoader () {
+        recordPlayerLoadingContainer.style.display = 'none';
+        isilRecord.classList.remove('putRecordOn');
+        spinningRecord.classList.remove('spinningRecord');
+        recordSleeve.classList.remove('disappear');
+        recordSleeveLogo.classList.remove('disappear');
+        recordSleeveTitle.classList.remove('disappear');
+        needleArm3.classList.remove('needle3');
+        needleArm4.classList.remove('needle4');
+        needleArm5.classList.remove('needle5');
+        recordButtons7.classList.remove('buttonTurn');
+        recordPlayerLoader.classList.remove('recordPulse');
+        loaderQuote.classList.remove('lyrics');
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (recordPlayerLoadingContainer.style.display != 'none') {
+            hideLoader();
+        }
+    });
+</script>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+</script>

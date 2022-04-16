@@ -1,0 +1,1788 @@
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    min-height: 100%;
+    position: relative;
+    margin-top: 68px;
+    padding-bottom: 60px;
+    overflow-x: auto; /* Scroll horizontally as needed */
+    text-align: center; /* Center contents */
+}
+
+main .form-control {
+    display: inline-block;
+    width: auto;
+    border: 2px solid #A61C76;
+    border-radius: 10px;
+    line-height: .75;
+}
+
+main img
+{
+    /* Constrain images on small screens */
+    max-width: 100%;
+}
+
+.topSection {
+    padding-top: 6rem;
+}
+
+img:focus-visible {
+    outline-color: #fff;
+}
+
+.blackberry {
+    color: #A61C76;
+}
+
+.tooltip {
+    color: #fff;
+}
+
+header {
+    position: relative;
+    top: 5rem;
+    -moz-animation: hideAlert 5s linear 5s forwards;
+     /*Firefox*/
+    -webkit-animation: hideAlert 5s linear 5s forwards;
+     /*Safari and Chrome*/
+    -o-animation: hideAlert 5s linear 5s forwards;
+     /*Opera*/
+    animation: hideAlert 5s linear 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes hideAlert {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .25;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+@-webkit-keyframes hideAlert {
+       0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .25;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
+
+input {
+    color: #A61C76!important;
+}
+
+.form-control:focus, .dataTables_wrapper input:focus {
+    border-color: #A61C76;
+    box-shadow: 0 0 10px 0.25rem rgba(230, 104, 163, 90);
+}
+
+/*-----LOG IN PAGE BACKGROUND VIDEO-----*/
+video, #presentation {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  object-fit: cover;
+  opacity: 1;
+}
+
+#videoFilter {
+  width: 101vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  object-fit: cover;
+  background-color: #000;
+  opacity: .9;
+}
+
+
+/*-----NAVIGATION-----*/
+
+nav {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #000;
+    border: 2px solid #A61C76;
+}
+
+.navbar {
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.navbar-collapse {
+    padding-left: 1rem;
+}
+
+.navbar-collapse a:hover {
+    color: #fff!important;
+    text-shadow: 0 5px 15px rgba(166, 28, 118, 1);
+    font-size: 1.1rem;
+}
+
+.navbar-brand img:hover {
+    box-shadow: 0 5px 15px rgba(166, 28, 118, 1);
+}
+
+.navbar-toggler :hover {
+    box-shadow: 0 -10px 35px rgba(166, 28, 118, 1);
+}
+
+.navbar-brand {
+    margin-left: 1.25rem;
+}
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+#isilNavLogo img {
+    height: 33.25px;
+    width: 33.25px;
+}
+
+.nav-link {
+    color: mediumvioletred!important;
+    line-height: 1;
+    padding: .25rem 0;
+}
+
+.navbar-toggler {
+    border: 1px solid #A61C76!important;
+    margin-right: 1rem;
+    padding: .04rem .3rem;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(166,28,118, 65)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")
+}
+
+/*-----NAVIGATION-----*/
+/* Medium Screens */
+
+@media (min-width: 768px) {
+.navbar-collapse ul:last-child {
+    position: absolute;
+    left: 88%;
+}
+}
+
+
+/*-----FOOTER-----*/
+
+footer {
+    margin-top: 1rem;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    font-size: .5rem;
+}
+
+footer a {
+    color: #A61C76;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #000!important;
+    text-shadow: 0 5px 15px rgba(166, 28, 118, 1);
+}
+
+
+/*-----HERO TITLE/ISIL LOGO-----*/
+#isilLogoTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+#isilLogo {
+    max-height: 2.5rem;
+}
+
+@media (max-width: 768px) {
+#isilLogo {
+    max-height: 2.25rem;
+}
+}
+
+.isilWordmark {
+    font-family: 'Righteous', cursive;
+    color: #A61C76 ;
+}
+
+#isilTitle {
+    font-size: 1.25rem;
+    margin: 1rem auto 0 auto;
+}
+
+.pgTitle {
+    margin: 4rem auto 2rem auto;
+}
+
+@media (max-width: 768px) {
+.pgTitle {
+    font-size: 1.75rem;
+}
+}
+
+
+/*-----LOG IN/REGISTRATION PAGE-----*/
+#loginContainer {
+    max-width: 70%;
+    margin:0 auto;
+}
+
+#loginInfo {
+    color: #fff;
+    text-align: left;
+    margin-left: 2.5rem;
+}
+
+#loginInfoHeader, #featuresContainer {
+    max-width: 90%;
+}
+
+#loginInfoHeader h3 {
+    font-size: 1.5vw;
+    color: #A61C76
+}
+
+#loginInfoText {
+    font-size: 1.15vw;
+}
+
+#loginForm {
+    margin-bottom: 0;
+}
+
+#registrationForm {
+    margin: 2rem auto;
+}
+#loginFormContainer {
+    margin-right: 0!important;
+    margin-left: 0!important;
+}
+
+#loginForm, #registrationForm {
+    display: block;
+    min-height: 0;
+    max-height: 100%;
+    min-width: 0;
+    border: 3px solid #fff;
+    border-radius: 20px;
+    background: #A61C76;
+    background: -webkit-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: -moz-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+}
+
+#loginForm {
+    max-width: 80%;
+}
+
+#registrationForm {
+    max-width: 20%!important;
+}
+
+#featuresListContainer {
+    max-width: 90%;
+    font-size: 1.25vw;
+}
+
+#loginForm div, #registrationForm div {
+    margin: 1rem 0;
+}
+
+.loginInput, .registrationInput {
+    min-width: 0!important;
+    max-width: 90%;
+    position: relative;
+    top: 50%;
+}
+
+#loginUsername {
+    position: relative;
+    top: 50%;
+    min-width: 0;
+}
+
+#loginPassword {
+    position: relative;
+    top: 50%;
+    min-width: 0;
+}
+
+#loginButton {
+    position: relative;
+    top: 50%;
+}
+
+#featuresList {
+    margin-top: 2rem;
+    padding-left: 0;
+    list-style-type: none;
+    font-size: 1vw;
+    display: inline-block;
+    text-align: left;
+}
+
+#featuresList li {
+    padding-bottom: .75rem;
+}
+
+#featuresList li:last-child {
+    padding-bottom: 0;
+}
+.featureIcons {
+    margin-right: 2rem;
+}
+
+#notAMember {
+    margin-top: 5rem;
+    color: #fff;
+}
+
+
+/*-----LOG IN/REGISTRATION PAGE-----*/
+/*-----Large Screens-----*/
+
+@media (max-width: 1200px) {
+#loginContainer {
+    max-width: 75%;
+}
+
+.featureIcons {
+    width: 25px;
+    height: 25px;
+    margin-right: 1rem!important;
+}
+
+#loginInfoHeader, #featuresListContainer {
+    max-width: 100%!important;
+}
+
+#loginFormContainer {
+    margin-left: 1rem!important;
+}
+
+#loginForm {
+    max-width: 70%;
+}
+
+#registrationForm {
+    max-width: 25%!important;
+}
+}
+
+
+/*-----LOG IN/REGISTRATION PAGE-----*/
+/*-----In-Between M/L Screens-----*/
+
+@media (max-width: 950px) {
+
+#loginContainer, .dataTables_wrapper {
+    max-width: 80%;
+}
+
+.featureIcons {
+    width: 20px;
+    height: 20px;
+}
+
+#loginForm {
+    max-width: 65%;
+}
+
+#registrationForm {
+    max-width: 30%!important;
+}
+}
+
+
+/*-----LOG IN/REGISTRATION PAGE-----*/
+ /*-----Medium Screens-----*/
+
+@media (max-width: 768px) {
+
+#loginInfoHeader h3 {
+    font-size: 4vw;
+}
+
+#registrationForm {
+    max-width: 75%!important;
+}
+
+#loginForm, #registrationForm {
+    max-width: 75%;
+    margin: 1rem auto;
+}
+
+#loginContainer {
+    display: block!important;
+}
+
+#loginFormContainer {
+    margin-left: 0!important;
+}
+
+#loginInfo {
+    margin-left: 0;
+    text-align: center;
+}
+
+#loginInfoText {
+    font-size: 3.5vw;
+}
+
+#featuresList {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 1rem!important;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    font-size: 3vw!important;
+    font-weight: bold;
+}
+
+#featuresList li not:last-child {
+    padding-bottom: 1rem!important;
+    white-space: nowrap;
+}
+#featuresListContainer {
+    text-align: center!important;
+    color: #fff;
+    max-width: 100%;
+}
+
+#isilTitle {
+    max-width: 75%;
+    padding-bottom: 1rem;
+    margin: 0 auto;
+    font-size: 3.5vw;
+}
+
+#notAMember {
+    margin-top: 2rem;
+}
+}
+
+
+/*-----INDEX/HISTORY PAGE-----*/
+
+#memberSince {
+    line-height: .5;
+    font-weight: bold;
+}
+
+.statsOverviewBox {
+    height: 100px;
+    width: 100px;
+    min-width: 100px;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #A61C76;
+    border-radius: 16px;
+    box-shadow: 0 0 5px 0.25rem rgba(230, 104, 163, 1), 0 0 2px 0.25rem rgba(0, 0, 0, 1);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.statsOverviewLabel {
+    font-size: .65rem;
+    font-weight: bold;
+    text-shadow: 0 0px 15px rgba(256, 256, 256, .75);
+}
+
+#dashboardCTAContainer {
+    min-width: 348px;
+    max-width: 348px;
+    margin: 0 auto;
+}
+
+.indexCTA {
+    font-size: .9rem;
+    color: #000;
+    border-bottom: 1.5px solid #A61C76;
+    white-space: nowrap;
+}
+
+.indexCTA:hover {
+    color: #A61C76;
+    text-shadow: 0 0px 15px rgba(0, 0, 0, .5);
+}
+
+.blinking {
+    animation: blinking 2s steps(5, start) infinite;
+    -webkit-animation: blinking 2s steps(5, start) infinite;
+}
+
+@keyframes blinking {
+    to {
+      visibility: hidden;
+    }
+}
+@-webkit-keyframes blinking {
+    to {
+      visibility: hidden;
+    }
+}
+
+
+/*-----INDEX/HISTORY PAGE-----*/
+/*-----Medium Screens-----*/
+
+@media (max-width: 768px) {
+#memberSince p {
+    bottom: 2rem;
+    font-size: .85rem;
+}
+}
+
+
+/*-----BUTTONS-----*/
+
+.stylizedButton {
+    background: linear-gradient(135deg, #A61C76 10%, #fff 150%);
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-size: .85rem;
+    font-weight: 500;
+}
+
+.stylizedButton:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(194, 183, 201, .75);
+  border-color: #A61C76;
+}
+
+.btn-primary {
+    border-color: #fff;
+}
+.btn-primary:active {
+    border-color: #A61C76;
+}
+
+.btn-primary:focus {
+      box-shadow: 0 0 10px 0.25rem rgba(230, 104, 163, 90);
+      border-color: #A61C76;
+}
+
+#newSearchButton {
+    margin-top: .5rem;
+}
+
+
+/*-----SEARCH PAGE-----*/
+#searchContainer {
+    max-width: 50%;
+    margin:0 auto;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.searchForm {
+    /*width: 75vw;*/
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.searchForm input {
+    width: 50%;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+#searchInstructionsHeader {
+    margin-bottom: 3rem;
+}
+
+#searchButton {
+    font-size: 1.5rem;
+}
+
+
+/*-----SEARCH PAGE-----*/
+/*-----Large Screens-----*/
+@media (max-width: 1200px) {
+#searchContainer {
+    max-width: 65%;
+}
+
+.searchForm input {
+    width: 75%;
+}
+}
+
+/*-----SEARCH PAGE-----*/
+/*-----Medium Screens-----*/
+@media (max-width: 768px) {
+#searchContainer {
+    font-size: 1rem;
+    max-width: 85%;
+}
+.searchForm input {
+    font-size: 1rem;
+}
+
+#searchButton {
+    font-size: 1rem;
+}
+}
+
+
+/*-----SETLIST MODALS-----*/
+
+.modal-header {
+    background: #A61C76;
+    background: -webkit-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: -moz-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+}
+
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: 1;
+}
+
+.btn-close:hover {
+    box-shadow: 0 0 10px 0.25rem rgba(230, 104, 163, 90);
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23A61C76'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+}
+
+.alert-dismissible .btn-close {
+    top: 10px;
+    right: 10px;
+    padding: .5rem;
+    height: auto;
+    width: auto;
+}
+
+.offcanvas-header .btn-close, .alert .btn-close:hover {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23A61C76'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: 1;
+    margin: 0;
+    box-shadow: 0 0 3px rgb(255, 255, 255)
+}
+
+.offcanvas-header .btn-close:hover {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: 1;
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+}
+
+
+/*-----SEARCHED PAGE-----*/
+
+#searchAgain {
+    display: inline-block;
+    width: auto;
+    border: 3px solid #A61C76;
+    border-radius: 10px;
+    margin-top: 8rem;
+    padding: 1rem;
+}
+.searchAgainText {
+    font-size: 1rem;
+    margin: 0 auto 1rem auto;
+}
+
+
+/*-----EXPERIENCE DASHBOARD CARDS-----*/
+
+.statCategory {
+    border-bottom: 3px solid #A61C76;
+}
+
+.statIcon {
+    height: 40px;
+    width: 40px;
+}
+
+.cardContainer {
+    min-width: 350px;
+    border: 5px solid #A61C76;
+    border-radius: 16px;
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
+    background: -webkit-linear-gradient(to top left, #000 25%, #A61C76);
+    background: -moz-linear-gradient(to top left, #000 25%, #A61C76);
+    background: linear-gradient(to top left, #000 25%, #A61C76);
+}
+
+.card {
+    border: none;
+    margin: 1rem .5rem;
+    border-radius: 16px;
+    background-color: #000;
+    box-shadow: 0 0 5px 0.25rem rgba(230, 104, 163, 1), 0 0 2px 0.25rem rgba(0, 0, 0, 1);
+}
+
+.card-title {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem!important;
+    color: #A61C76;
+    grid-row: 1 / 2;
+    padding: .5rem 0;
+    border-bottom: 2px solid #A61C76;
+}
+
+.card-title2Line {
+    margin-top: -.5rem;
+}
+
+.card-titleButton {
+    margin-top: 0;
+}
+.card-body {
+    display: grid;
+    grid-template-rows: 25% 75%;
+    align-content: center;
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+    background-color: black;
+    border: 2px solid #A61C76;
+    border-radius: 16px;
+}
+
+.card-footer {
+    padding: 0 1rem;
+}
+
+.card-footer button {
+    margin-bottom: .5rem;
+    font-size: .5rem;
+}
+
+.card-body-sm {
+    height: 125px;
+    width: 125px;
+}
+
+.stats {
+    margin: auto;
+}
+
+.statsDiv h5 {
+    line-height: 1rem;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    margin: 15px auto;
+    background-color: #A61C76;
+    border-radius: 50%;
+}
+
+.namesTop5 {
+    font-size: .75rem!important;
+}
+
+.number {
+    grid-row: 2 / 3;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    font-size: 4em;
+    text-shadow: 0 0 3px rgba(256, 256, 256, 1);
+}
+
+.footnote {
+    color: #000;
+    font-size: 1rem;
+    max-width: 800px;
+}
+
+@media (max-width: 1200px) {
+.footnote {
+    max-width: 600px;
+    font-size: .9rem;
+}
+}
+
+@media (max-width: 768px) {
+.footnote {
+    max-width: 400px;
+    /*font-size: 1rem;*/
+}
+}
+
+@media (max-width: 468px) {
+.footnote {
+    max-width: 300px;
+}
+}
+
+@media (max-width: 368px) {
+.footnote {
+    max-width: 275px;
+}
+}
+
+/*-----Text Shadows-----*/
+.lightGlow {
+        text-shadow: 0 0 3px rgba(256, 256, 256, 1);
+}
+
+.blackberryGlow {
+        text-shadow: 0 0 3px rgba(166, 28, 118, 1);
+}
+
+/*-----Box Shadows-----*/
+.blackberryGlowBox {
+    box-shadow: 0px 0px 15px rgb(256 256 256), 0 5px 50px rgb(166 28 118);
+}
+
+.names {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+
+}
+
+
+/*-----EXPERIENCE DASHBOARD OFF-CANVAS-----*/
+
+.offcanvas {
+    background-color: #000;
+}
+.offcanvas-title {
+    color: #fff;
+    font-size: 1em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1)
+}
+
+.offcanvas-header, .alert {
+    justify-content: center;
+    background: -webkit-linear-gradient(to top left, #A61C76 10%, #000 90%);
+    background: -moz-linear-gradient(to top left, #A61C76 10%, #000 90%);
+    background: linear-gradient(to top left, #A61C76 10%, #000 90%);
+}
+
+.offcanvas-header button {
+    position: absolute;
+    right: 5%;
+}
+
+.offcanvas-body {
+    text-align: left;
+}
+
+.offcanvas-text {
+    font-size: .75rem!important;
+}
+
+.dropdown p {
+    color: #A61C76;
+}
+
+.separator {
+    border-color: rgba(230, 104, 163, .5)!important;
+}
+
+
+/*-----TABLES-----*/
+
+.table {
+    vertical-align: middle;
+    margin-top:2rem;
+}
+
+.table:hover {
+    cursor: pointer;
+}
+
+thead {
+    border-top: 5px solid #A61C76;
+    border-bottom: 5px solid #A61C76;
+    border-left: 5px solid #A61C76;
+    border-radius: 25%;
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    vertical-align: middle!important;
+}
+
+thead th:last-child {
+    border-right: 5px solid #A61C76;
+}
+
+/*Change color of table headers (except for last) upon hover */
+.sorting:hover:not(:last-child) {
+   color: #A61C76;
+}
+
+.sortArrows {
+    color: #A61C76;
+    fill: currentColor;
+    height: 14px;
+    width: 14px;
+    margin-left: 10px;
+}
+
+tbody {
+    font-size: .8rem;
+    border-left: 5px solid #A61C76;
+}
+
+tbody tr:last-child {
+    border-bottom: 5px solid #A61C76;
+}
+
+tr td:last-child {
+    border-right: 5px solid #A61C76;
+    white-space: nowrap;
+}
+
+tr th {
+    white-space: nowrap;
+}
+
+.dataTable {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.dataTables_wrapper {
+    max-width: 85%;
+    margin:0 auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto auto;
+}
+
+.dataTables_length, .dataTables_filter {
+    position: relative;
+    bottom: 10px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.dataTables_length {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-self: end;
+    justify-self: left;
+    margin-left: 5px;
+    color: #A61C76;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;}
+
+.dataTables_filter {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-right: 4rem;
+}
+
+.dataTables_filter input {
+    margin-left: 10px;
+    border: 2px solid #A61C76;
+    border-radius: 10px;
+    padding: .25rem .5rem;
+}
+
+.dataTables_filter input:focus-visible {
+    outline: none;
+}
+
+.dataTables_info {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    text-transform: uppercase;
+    margin: 1rem auto .5rem auto;
+}
+
+.dataTables_paginate {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    cursor: pointer;
+}
+
+.dataTables_paginate a:hover {
+    color: #000;
+}
+
+.paginate_button {
+    color: #A61C76;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 .5rem;
+}
+
+.paginate_button.current {
+    color: #000;
+}
+
+#ticketIcon {
+    height: 32px;
+    width: auto;
+}
+
+
+/*-----TABLES-----*/
+/*-----In-Between M/L Screens-----*/
+@media (max-width: 950px) {
+
+.table {
+    font-size: .75rem;
+}
+
+#loginContainer, .dataTables_wrapper {
+    max-width: 80%;
+}
+
+.dataTables_length {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-self: end;
+    justify-self: left;
+    margin-left: 5px;
+    color: #A61C76;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;}
+
+.dataTables_filter {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-right: 0rem;
+}
+
+.dataTables_filter, .dataTables_length {
+    font-size: .75rem;
+}
+}
+
+/*-----TABLES-----*/
+/*-----Medium Screens-----*/
+@media (max-width: 768px) {
+
+.dataTables_wrapper {
+    max-width: 100%!important;
+    overflow-x: scroll;
+    margin:0 auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto auto auto;
+}
+
+.dataTable {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    margin-top: 0;
+}
+
+.dataTables_length {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: 1rem auto 0 auto;
+}
+
+.dataTables_filter {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin: 1rem auto 0 auto;
+}
+
+.dataTables_info {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    margin: 0 auto 1rem auto;
+}
+
+.dataTables_paginate {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+.sortArrows {
+    height: 8px;
+    width: 8px;
+    margin-left: 3px;
+}
+}
+
+
+/* SEARCH RESULTS PAGE */
+
+#searchResultsTitle {
+    margin: 3rem auto 2rem auto;
+}
+
+
+#filterResults {
+    margin-bottom: .25em;
+    width: 50%;
+}
+
+
+/*-----ERROR PAGE-----*/
+#errorPage {
+    position: absolute;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: #A61C76;
+    background: -webkit-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: -moz-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+}
+
+#errorContainer {
+    max-width: 75%;
+    border: 4px solid #000;
+    border-radius: 20px;
+    padding: 3rem;
+    background: -webkit-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: -moz-linear-gradient(to bottom right, #A61C76 20%, #000 80%);
+    background: linear-gradient(to top left, #A61C76 20%, #000 80%);
+    box-shadow: 0 0 5px 0.25rem rgba(230, 104, 163, 1), 0 0 2px 0.25rem rgba(0, 0, 0, 1);
+}
+
+
+/*-----SPINNING RECORD PLAYER LOADING SCREEN-----*/
+#recordPlayerLoadingContainer {
+    position: absolute;
+    left: 0;
+    display: none;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, .95);
+    z-index: 99;
+}
+
+#recordPlayerLoader {
+    position: relative;
+    margin: auto;
+    width: 130px;
+    height: 110px;
+    border: 2px solid black;
+    box-sizing: content-box;
+    background: rgb(0,0,0);
+    background: linear-gradient(152deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9206057422969187) 4%, rgba(218,217,216,1) 100%);
+    box-shadow: 0px 0px 15px rgb(256 256 256), 0 5px 50px rgb(166 28 118);
+}
+
+/*-----Record Player Pulses Light After Knob Turned-----*/
+.recordPulse {
+    -webkit-animation-name: recordPulse;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 5.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+
+    -moz-animation-name: recordPulse;
+    -moz-animation-duration: .5s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 5.5s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: alternate;
+
+    animation: recordPulse .5s linear 5.5s infinite alternate;
+}
+
+@keyframes recordPulse {
+    0% {
+        box-shadow: 0 0 10px 0.25rem rgba(230, 104, 163, .1);
+    }
+    25% {
+        box-shadow: 0 0 20px 0.5rem rgba(230, 104, 163, .25);
+    }
+    50% {
+        box-shadow: 0 0 30px 0.75rem rgba(230, 104, 163, .5);
+    }
+    75% {
+        box-shadow: 0 0 40px 0.9rem rgba(230, 104, 163, .75);
+    }
+    100% {
+        box-shadow: 0 0 50px 1rem rgba(230, 104, 163, 1);
+    }
+}
+
+#recordMat {
+    position: absolute;
+    background: #000;
+    height: 99px;
+    width: 99px;
+    border-radius: 50%;
+    bottom: 5px;
+    left: 8px;
+}
+
+#spindle {
+    height: 3px;
+    width: 3px;
+    background: #BDBDBD;
+    border-radius: 50%;
+    position: relative;
+    top: 49.5px;
+    left: 49.5px;
+}
+
+#spinningRecord {
+    opacity: 0;
+    position: relative;
+    right: 20px;
+    top: 5px;
+    z-index: 101;
+    height: 100px;
+}
+
+.spinningRecord2 {
+    opacity: 1;
+    position: relative;
+    right: 20px;
+    top: 5px;
+    z-index: 101;
+    height: 100px;
+}
+
+
+/*-----Spinning Record Appears After Knob Turned-----*/
+.spinningRecord {
+    -webkit-animation-name: appear;
+    -webkit-animation-duration: .1ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 5.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+
+    -moz-animation-name: appear;
+    -moz-animation-duration: .1ms;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 5.5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+
+    animation: appear .1ms linear 5.5s 1 forwards;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#isilRecord {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    z-index: 1;
+}
+
+/*-----Record Is Removed From Sleeve And Placed Onto Record Player Mat-----*/
+.putRecordOn {
+    -webkit-animation-name: putRecordOn;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+
+    -moz-animation-name: putRecordOn;
+    -moz-animation-duration: 4s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: .5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+
+    animation: putRecordOn 4s linear .5s 1 forwards;
+}
+
+@keyframes putRecordOn {
+    0% {
+        -webkit-transform: translateY(0px 0px);
+        transform: translateY(0px 0px);
+        height: 150px;
+        width: 150px;
+    }
+    75% {
+        -webkit-transform: translate(-20px, 310px);
+        transform: translate(-20px, 310px);
+        height: 100px;
+        width: 100px;
+    }
+    100% {
+        -webkit-transform: translate(-20px, 307px);
+        transform: translate(-20px, 307px);
+        height: 100px;
+        width: 100px;
+    }
+}
+
+#greatestHits {
+    margin-top: 15vh;
+    margin-bottom: 200px;
+}
+
+#recordSleeve {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border: 4px solid #000;
+    border-radius: 2px;
+    background: #fff;
+    z-index: 2;
+    box-shadow: 2px 2px 2px #AC1C76, -2px -2px 2px #AC1C76;
+}
+
+#recordSleeveLogo {
+    position: relative;
+    bottom: 13px;
+    height: 130px;
+    width: 130px;
+}
+
+#recordSleeveTitle {
+    position: relative;
+    top: 110px;
+    font-weight: bold;
+    font-size:.8rem;
+    z-index: 1;
+    text-shadow: 0 0 6px rgba(256, 256, 256, .75);
+}
+
+/*-----Record Sleeve Fades Away-----*/
+.disappear {
+    -webkit-animation-name: disappear;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 3s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+
+    -moz-animation-name: disappear;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 3s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+
+    animation: disappear 2s linear 3s 1 forwards;
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/*-----All Pieces Of Record Player Arm/Needle-----*/
+#needleArm1 {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #A61C76;
+    border-radius: 50%;
+    background: black;
+    position: relative;
+    left: 91px;
+    bottom: 90px;
+}
+
+#needleArm2 {
+    height: 8px;
+    width: 8px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background: #A61C76;
+    position: relative;
+    left: 102px;
+    bottom: 109px;
+}
+
+#needleArm3 {
+    height: 50px;
+    width: 3px;
+    background: #D4D4D6;
+    border: 1px solid black;
+    border-radius: 80%;
+    position: relative;
+    left: 104px;
+    bottom: 114px;
+    transform: rotate(1deg);
+    z-index:102;
+}
+
+/*-----Needle Arm 3 Moved To Play Record-----*/
+.needle3 {
+    -webkit-animation-name: needle3;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 5.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+
+    -moz-animation-name: needle3;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 5.5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+
+    animation: needle3 2s linear 5.5s 1 forwards;
+}
+
+@keyframes needle3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        left: 104px;
+        bottom: 114px;
+    }
+    100% {
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+        left: 92px;
+        bottom: 116px;
+    }
+}
+
+#needleArm4 {
+    height: 30px;
+    width: 3px;
+    background: #D4D4D6;
+    border: 1px solid black;
+    position: relative;
+    left: 93px;
+    bottom: 120px;
+    transform: rotate(45deg);
+    z-index:103;
+}
+
+/*-----Needle Arm 4 Moved To Play Record-----*/
+.needle4 {
+    -webkit-animation-name: needle4;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 5.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+
+    -moz-animation-name: needle4;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 5.5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+
+    animation: needle4 2s linear 5.5s 1 forwards;
+}
+
+@keyframes needle4 {
+    0% {
+        left: 93px;
+        bottom: 120px;
+    }
+    100% {
+        left: 70px;
+        bottom: 125px;
+    }
+}
+
+#needleArm5 {
+    height: 14px;
+    width: 8px;
+    background-color: grey;
+    border: 1px solid #D4D4D6;
+    transform: rotate(226deg);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    position: relative;
+    bottom: 129px;
+    left: 77px;
+    z-index: 104;
+}
+
+/*-----Needle Arm 5 Moved To Play Record-----*/
+.needle5 {
+    -webkit-animation-name: needle5;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 5.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+
+    -moz-animation-name: needle5;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 5.5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+
+    animation: needle5 2s linear 5.5s 1 forwards;
+}
+
+@keyframes needle5 {
+    0% {
+        left: 77px;
+        bottom: 129px;
+    }
+    100% {
+        left: 56px;
+        bottom: 136px;
+    }
+}
+
+#needleArm6 {
+    height: 20px;
+    width: 20px;
+    border: .5px solid #A61C76;
+    border-radius: 50%;
+    position: relative;
+    left: 96px;
+    bottom: 217px;
+}
+
+#needleArm {
+    position: relative;
+    left: 5px;
+}
+
+#recordButtons1 {
+    height: 18px;
+    width: 18px;
+    border: .25px solid black;
+    border-radius: 50%;
+    background: #D4D4D6;
+    position: relative;
+    left: 119px;
+    bottom: 174px;
+}
+
+#recordButtons2 {
+    height: 18px;
+    width: 18px;
+    border: .25px solid black;
+    border-radius: 50%;
+    background: #D4D4D6;
+    position: relative;
+    left: 119px;
+    bottom: 212px;
+}
+
+#recordButtons3 {
+    height: 11px;
+    width: 11px;
+    border: .25px solid black;
+    border-radius: 50%;
+    background: #D4D4D6;
+    position: relative;
+    left: 123px;
+    bottom: 243px;
+}
+
+#recordButtons4 {
+    height: 14px;
+    width: 14px;
+    border: .25px solid black;
+    border-radius: 50%;
+    background: #A61C76;
+    position: relative;
+    left: 121px;
+    bottom: 219px;
+}
+
+#recordButtons5 {
+    height: 14px;
+    width: 14px;
+    border: .25px solid black;
+    border-radius: 50%;
+    background: #A61C76;
+    position: relative;
+    left: 121px;
+    bottom: 253px;
+}
+
+#recordButtons6 {
+    height: 7px;
+    width: 7px;
+    border: .1px solid black;
+    border-radius: 50%;
+    background: #A61C76;
+    position: relative;
+    left: 125px;
+    bottom: 280px;
+}
+
+#recordButtons7 {
+    height: 10px;
+    width: 2px;
+    background: black;
+    position: relative;
+    left: 127px;
+    bottom: 252px;
+}
+
+/*-----Button Turned To Start Record Player-----*/
+.buttonTurn {
+    -webkit-animation-name: buttonTurn;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+
+    -moz-animation-name: buttonTurn;
+    -moz-animation-duration: .5s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+
+    animation: buttonTurn .5s linear 5s 1 forwards;
+}
+
+@keyframes buttonTurn {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+}
+
+#recordButtons8 {
+    height: 10px;
+    width: 2px;
+    background: black;
+    position: relative;
+    left: 127px;
+    bottom: 282px;
+}
+
+#recordButtons9 {
+    height: 3px;
+    width: 1px;
+    background: black;
+    position: relative;
+    left: 128px;
+    bottom: 305px;
+}
+
+#recordButtons {
+    position: relative;
+    top: 2px;
+    right: 2px;
+}
+
+#loaderQuote {
+    position: relative;
+    color: #fff;
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 800;
+    opacity: 0;
+}
+
+/*-----Song Lyrics Pulse-----*/
+.lyrics {
+    -webkit-animation-name: lyrics;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+
+    -moz-animation-name: lyrics;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 8s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: alternate;
+
+    animation: lyrics 2s linear 8s infinite alternate;
+}
+
+@keyframes lyrics {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
