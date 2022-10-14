@@ -66,7 +66,7 @@ Serves as the “skeleton” template that the rest of the below views inherit. 
 Additionally, each view has access to the packages included in the header of layout.html (Bootstrap CSS, Bootstrap JS Bundle, Bootstrap Icons, Favicon, jQuery Bundle, jQuery DataTables ISIL’s Custom CSS, and JS functions that are needed across multiple views (Dynamic Creation/Display of setlist modals, displaying animated loading indicator, displaying Tooltips when triggered and toggling the color switch of the ISIL Home Button upon hover.
 
 ### **index.html**
-![I SAW IT LIVE INDEX PAGE](https://user-images.githubusercontent.com/78568826/153443616-8917351d-e4f3-42a1-a06b-cb36bb005c50.png "I SAW IT LIVE INDEX PAGE")
+![I SAW IT LIVE INDEX PAGE](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/707aa85c1bb09041239f4533ce5bd5210ff5e0c8/static/ISIL_History_01.gif "I SAW IT LIVE INDEX PAGE")
 
 Supporting the “GET” method only, index.html inherits the structure of layout.html and serves as the main landing page and account overview once a user has logged in. This view will also be served after a user adds/removes a concert to their ISIL History, as well as whenever the ISIL icon in the navigation is clicked on.
 
@@ -81,7 +81,8 @@ Clicking any concert in the table will trigger a modal displaying the associated
 Finally, the last column of the table includes a “REMOVE SHOW” button, allowing users to delete a concert from their ISIL History if it was not a show they attended, or if they just choose to not include it. As a fail-safe for accidental clicking of this button, a confirmation modal is triggered first, requiring a user to either confirm or cancel the request to remove the concert from their history. If they confirm the removal, a POST request is made to the /removeShow route (see “CONTROLLER” section), index.html is then reloaded, including flashing an alert message at the top of the screen, confirming that the concert has been removed.
 
 ### **login.html**
-![I SAW IT LIVE LOG IN PAGE](https://user-images.githubusercontent.com/78568826/153443623-a417c57c-a764-49c1-9fa1-d5b893d87a04.png "I SAW IT LIVE LOG IN PAGE")
+![I SAW IT LIVE INDEX PAGE](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/master/static/ISIL_Login_01.gif "I SAW IT LIVE INDEX PAGE")
+
 Supporting both “GET” and “POST” methods of the /login route (see “CONTROLLER” section), login.html inherits the structure of layout.html and serves as the initial gatekeeper of I SAW IT LIVE, given all other routes (besides /register) first require a user to be logged-in before accessing.
 
 In addition to allowing existing users to log in to their account, this view also provides non-members with an overview description of I SAW IT LIVE in order to pique their interest and lead them to click through to register for an account.
