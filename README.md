@@ -19,6 +19,7 @@ The database contains the following tables:
 
 #### **concerts**
 The concerts table stores data on every concert an ISIL user has attended. New rows representing each concert, are added to the table the first time any ISIL user adds a specific concert. If a second user later adds the same concert to their ISIL History, the concerts table will not be modified.
+<img width="1152" alt="image" src="https://user-images.githubusercontent.com/78568826/195933128-bcd1cb76-dfd7-4859-83ff-dbeead05c83a.png">
 
 Each concert is identified by a unique id (PRIMARY KEY), along with a setlistId provided by setlist.fm. Additionally, each concert row includes the date of the concert, name of the artist, setlist.fm venueId (FOREIGN KEY), setlist.fm setlist url and a boolean variable for whether or not the concert included an encore set.
 
@@ -202,21 +203,22 @@ Rather than linking to a hard-coded version of the .png file for every concert a
 * After making final choices, the HTML code to share/embed the setlist is provided
 ![setlist.fm Widget Code Example](https://user-images.githubusercontent.com/78568826/153436263-396b0c3c-aff2-4c7e-859d-f1be05e7d973.png "setlist.fm Widget Code Example")
 * The end result looks like this
+
 ![setlist.fm Setlist Widget Example](https://user-images.githubusercontent.com/78568826/153436318-1cd9f4f7-d66e-41a3-8b67-869501047cfb.png "setlist.fm Setlist Widget Example")
-* Back on the I SAW IT LIVE end, the HTML code written for the setlist modal was done so in a template-fashion, leaving placeholder values for the <a href>, <a title>, <img src> and <img alt> attributes
-* If the .png file of the setlist is represented by the <img src> value in setlist.fm’s provided HTML code, that same value needs to end up as the <img src> value within ISIL’s modal body HTML code.
-* Additionally, there needs to be a way to temporarily store the <a href> and <a title> values so that the setlist displayed within ISIL will lead the user to setlist.fm’s corresponding page if a user clicks on the .png of the setlist once it is displayed in modal, as well as the <img alt> value so accessibility compliance is maintained (e.g. <img alt>, <a title> values)
+* Back on the I SAW IT LIVE end, the HTML code written for the setlist modal was done so in a template-fashion, leaving placeholder values for the `<a href>`, `<a title>`, `<img src>` and `<img alt>` attributes
+* If the .png file of the setlist is represented by the `<img src>` value in setlist.fm’s provided HTML code, that same value needs to end up as the `<img src>` value within ISIL’s modal body HTML code.
+* Additionally, there needs to be a way to temporarily store the `<a href>` and `<a title>` values so that the setlist displayed within ISIL will lead the user to setlist.fm’s corresponding page if a user clicks on the .png of the setlist once it is displayed in modal, as well as the `<img alt>` value so accessibility compliance is maintained (e.g. `<img alt>`, `<a title>` values)
 * Finally, the setlist.fm setlistId value is needed so that if a user clicks to add the concert to their ISIL History from within the open setlist modal, the /addShow route has a setlistId to reference
-* This was achieved by leveraging data-* attributes to store custom data attributes. This is first done by passing values over when the data table is initially populated with rows representing the concerts. While only one Jinja variable was needed to display the corresponding value of each column of each row in the table (e.g. {{ concert.date }}, {{ concert.artist }}, etc.), additional Jinja variables were utilized to access and collect values for the following data-attributes:
-    * data-bs-setlistId
-    * data-bs-url
-    * data-bs-setlistUrl
-    * data-bs-artist
-    * data-bs-date
-    * data-bs-venue
+* This was achieved by leveraging `data-*` attributes to store custom data attributes. This is first done by passing values over when the data table is initially populated with rows representing the concerts. While only one Jinja variable was needed to display the corresponding value of each column of each row in the table (e.g. `{{ concert.date }}`, `{{ concert.artist }}`, etc.), additional Jinja variables were utilized to access and collect values for the following data-attributes:
+    * `data-bs-setlistId`
+    * `data-bs-url`
+    * `data-bs-setlistUrl`
+    * `data-bs-artist`
+    * `data-bs-date`
+    * `data-bs-venue`
 * Additionally, to connect the rows to the modal whenever a row is clicked on, the following data-attributes were also included:
-    * data-bs-toggle=“modal”
-    * data-bs-target=“#setlistModal” (this is the id of the setlist modal template element
+    * `data-bs-toggle=“modal”`
+    * `data-bs-target=“#setlistModal”` (this is the id of the setlist modal template element
 * Now, every concert row was ready to alter the contents displayed in the setlist modal, if a user chose to click on it, but the final piece to the puzzle is a block of JavaScript that gets triggered when a user clicks on a concert row. At that point, the image URL, setlist URL, Setlist Id, Artist Name, Date of Concert, Venue Name/City/State/Country corresponding with the data-attributes of the row, are all referenced and stored within the JS function. Then, each of the necessary data-attributes of the modal element in the HTML code are updated with the corresponding values just collected, and the correct setlist image is displayed within the modal on the user’s screen
 * This process is repeated every time another concert row is clicked
 ![ISIL Setlist Modal Code Process Map"](https://user-images.githubusercontent.com/78568826/153437566-f6cc4877-903a-4715-9191-67a35fbfb24a.png "ISIL Setlist Modal Code Process Map")
