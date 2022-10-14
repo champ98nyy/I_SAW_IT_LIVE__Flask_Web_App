@@ -1,7 +1,13 @@
+<p align="center">
+   <img src="static/ISIL_Logo_Lockup_Cropped.png" width="50%" height="50%">
+</p>
+<br>
+<br>
+<br>
 
-# **I SAW IT LIVE**
-
-[Walkthrough Video]
+<p align="center">
+   <a href=href="www.youtube.com/watch?v=mmu7qPxe9-M"><img src="static/ISIL_Walkthrough_Still.png" alt="YouTube Video still of I SAW IT LIVE walkthrough video" width="50%" height="50%"><br>
+</p>
 
 I SAW IT LIVE (ISIL) is a personal concert tracker web application, providing users with a central hub to keep track of every concert they have ever attended. Beyond just a list, or even a datatable of all the concerts, ISIL also provides a dynamically-generated data dashboard specific to their lifetime live music experience.
 
@@ -19,7 +25,6 @@ The database contains the following tables:
 
 #### **concerts**
 The concerts table stores data on every concert an ISIL user has attended. New rows representing each concert, are added to the table the first time any ISIL user adds a specific concert. If a second user later adds the same concert to their ISIL History, the concerts table will not be modified.
-<img width="1152" alt="image" src="https://user-images.githubusercontent.com/78568826/195933128-bcd1cb76-dfd7-4859-83ff-dbeead05c83a.png">
 
 Each concert is identified by a unique id (PRIMARY KEY), along with a setlistId provided by setlist.fm. Additionally, each concert row includes the date of the concert, name of the artist, setlist.fm venueId (FOREIGN KEY), setlist.fm setlist url and a boolean variable for whether or not the concert included an encore set.
 
