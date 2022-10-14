@@ -94,24 +94,23 @@ The fullscreen video background of a concert-goer’s POV of a band performing o
 Supporting both “GET” and “POST” methods of the /register route (see “CONTROLLER” section), register.html inherits the structure of layout.html and allows new users to register for an I SAW IT LIVE account.
 
 ### **search.html**
-![I SAW IT LIVE SEARCH PAGE](https://user-images.githubusercontent.com/78568826/153443614-e809994d-51b6-49f7-bc1b-395694fd2f2a.png "I SAW IT LIVE SEARCH PAGE")
+![I SAW IT LIVE SEARCH PAGE](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/c2b0c2a68ab428edcfd7f9a30ba21dc96bf9a604/static/ISIL_Search_01.gif "I SAW IT LIVE SEARCH PAGE")
 While the /search route (see “CONTROLLER section) supports both “GET” and “POST” methods, a user will be served the search.html view if they reach the route via “GET” request (see searched.html for “POST” requests).
 
 This view inherits the structure of layout.html and serves as the main destination for users to search for, then add concerts to their ISIL History. Users input the name of the artist/band they would like to search for, triggering a “POST” request method on the /search route and sending the user to the searched.html view for the results.
 
 ### **searched.html**
-![I SAW IT LIVE SEARCH RESULTS PAGE](https://user-images.githubusercontent.com/78568826/153443613-524b2f78-ed68-4269-8c41-7379a5889a10.png "I SAW IT LIVE SEARCH RESULTS PAGE")
+![I SAW IT LIVE SEARCH RESULTS PAGE](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/c2b0c2a68ab428edcfd7f9a30ba21dc96bf9a604/static/ISIL_Searched_01.gif "I SAW IT LIVE SEARCH RESULTS PAGE")
 While search.html is responsible for serving users a location in which to search for concerts, searched.html inherits the structure of layout.html and plays the complementary role of displaying said search results. At the top of the page is a miniature recurrence of the previous search.html functionality, allowing users to search again if the results are not what they were looking for, or if they would just like to search for another artist.
 
 The remainder of this view closely mirrors the data table portion of index.html, housing a jQuery DataTable of every concert performed by the artist searched for. Again, Filtering, Multi-Column Sorting and Pagination functionality are built into the table.
 
 Clicking any concert in the table will trigger a modal displaying the associated setlist (more detail on setlist modals below).
-![I SAW IT LIVE SEARCH RESULTS PAGE SETLIST MODAL](https://user-images.githubusercontent.com/78568826/153443612-a199ff26-350b-48de-9d36-7c5d0105dd47.png "I SAW IT LIVE SEARCH RESULTS PAGE SETLIST MODAL")
 
 The “REMOVE SHOW” button from the ISIL History table is replaced by an “ADD SHOW” button, allowing users to add the concert to their ISIL History. As a fail-safe for accidental clicking of this button, a confirmation modal is triggered first, requiring a user to either confirm or cancel the request to add the concert to their history. If they confirm the addition, a POST request is made to the /addShow route (see “CONTROLLER” section), and the user is returned to index.html where an alert message is flashed at the top of the screen, confirming that the concert has been added.
 
 ### **experience.html**
-![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE MILESTONE DATES](https://user-images.githubusercontent.com/78568826/153443603-7d38a246-c671-41ec-b52e-3ebd3a976810.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE MILESTONE DATES")
+![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE MILESTONE DATES](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/41d2e7667555f1692b727a0bdc6ce1914ed9ffe6/static/ISIL_XD_01.gif "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE MILESTONE DATES")
 Supporting the “GET” method only, experience.html inherits the structure of layout.html and serves as the user’s statistical data dashboard.
 Jinja variables and expressions are leveraged to dynamically display 17 separate statistical cards across 4 categories.
 
@@ -134,7 +133,7 @@ Additionally, Jinja mathematical operators were leveraged in order to calculate 
     * Jinja Control Structure used to only display “Days” if less than a year has passed
 
 #### PERFORMANCES + ARTISTS
-![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE PERFORMANCES + ARTISTS](https://user-images.githubusercontent.com/78568826/153443602-64ef5b91-a1ac-42aa-a241-a09198a98582.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE PERFORMANCES + ARTISTS")
+![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE PERFORMANCES + ARTISTS](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/41d2e7667555f1692b727a0bdc6ce1914ed9ffe6/static/ISIL_Artists.gif "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE PERFORMANCES + ARTISTS")
 * Concerts Attended
     * Total quantity of concerts the user has attended
     * As indicated in the notes above this section of statistical cards, a “Concert” is defined as “1 (or more) Performance(s) by 1 (or more) Artist(s).” This handles a common scenario in which a user attends a concert with more than one act performing (e.g. an opening act performs, followed by the headline act). Although the user in this scenario would have seen 2 Performances by 2 Artists, colloquially, they attended 1 Concert, not 2
@@ -149,10 +148,8 @@ Additionally, Jinja mathematical operators were leveraged in order to calculate 
     * If the user has attended live performances by more than 5 unique artists, a button will be added within this card, indicating how many more unique artists they have seen live. Clicking the button will trigger an OffCanvas, which displays a table of every artist the user has seen perform live and the total quantity of performances the user has attended for each artist.
         * At the bottom of the OffCanvas, is another button that will bring the user to search.html to search for additional concerts to add to their ISIL History. This was included here because it’s a natural next step to take if a user has just read through the entire list of artists they have ever seen perform live, and realizes that somebody is missing from the list
 
-            ![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE ALL ARTISTS OFFCANVAS](https://user-images.githubusercontent.com/78568826/153443600-5d6f047d-8138-46bc-8ed0-f8f2cef8ffa1.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE ALL ARTISTS OFFCANVAS")
-
 #### SONGS
-![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE SONGS](https://user-images.githubusercontent.com/78568826/153448873-56e0efa4-72de-4dac-b189-eb851d69474e.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE SONGS")
+![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE SONGS](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/41d2e7667555f1692b727a0bdc6ce1914ed9ffe6/static/ISIL_Songs.gif "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE SONGS")
 * Total Songs Heard
     * Total quantity of songs the user has heard live at all of the concerts they have attended
     * As indicated in the notes above this section of statistical cards, repeat songs are counted. That means that if a user has heard the same song performed by the same artist at more than one concert, each instance would count towards this total
@@ -170,18 +167,15 @@ Additionally, Jinja mathematical operators were leveraged in order to calculate 
     * If the user has heard more than 5 unique songs performed, a button will be added within this card, indicating how many more unique songs they have heard performed live. Clicking the button will trigger an OffCanvas, which displays a table of every song the user has heard performed live and the total quantity of performances of that song the user has been in attendance for
         * At the bottom of the OffCanvas, is another button that will bring the user to search.html to search for additional concerts to add to their ISIL History. This was included here because it’s a natural next step to take if a user has just read through the entire list of songs they have ever heard performed live, and realizes that something is missing from the list
 
-        ![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE TOP 5 SONGS OFFCANVAS](https://user-images.githubusercontent.com/78568826/153448872-8c52a907-413a-4ba6-976f-362169b06ec3.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE TOP 5 SONGS OFFCANVAS")
 * Top 5 Songs Heard As Encores
     * This statistic follows the same premise as “Top 5 Songs Heard” (above), except ONLY includes the songs that were played as part of an encore set, per the structure of the setlist
-
-        ![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE TOP 5 SONGS OFFCANVAS](https://user-images.githubusercontent.com/78568826/153448867-1a5b7d57-f183-4893-9e52-f11cf446e933.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE TOP 5 SONGS OFFCANVAS")
 
 * One additional note included at the top of this section of statistical cards, states that “Song Stats don’t include songs from (dynamically generated quantity) performances seen, which don’t have setlist information.” This accounts for the fact that not every performance in setlist.fm’s database has a corresponding setlist. It is not uncommon for older shows and/or some opening acts to be listed within the database, but not contain any information regarding the set performed
     * The quantity depends on each individual user’s history of performances attended, and is dynamically generated by the /experience route and displayed as a fraction in the following manner:
         * Total quantity of performances attended for which there is no setlist information/Total quantity of all performances attended
 
 #### LOCATIONS
-![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE LOCATIONS](https://user-images.githubusercontent.com/78568826/153443598-cff16950-e55c-4d63-8abd-1bcb266fbabc.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE LOCATIONS")
+![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE LOCATIONS](https://github.com/champ98nyy/I_SAW_IT_LIVE__Flask_Web_App/blob/41d2e7667555f1692b727a0bdc6ce1914ed9ffe6/static/ISIL_Locations.gif "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE LOCATIONS")
 
 * Locations Explored
     * Total quantities of Cities, States and Countries in which the user has attended at least one concert
@@ -193,8 +187,6 @@ Additionally, Jinja mathematical operators were leveraged in order to calculate 
     * The top 5 venues the user has attended concerts within, based on quantity
     * If the user has attended concerts at more than 5 unique venues, a button will be added within this card, indicating how many more unique venues they have been to. Clicking the button will trigger an OffCanvas, which displays a table of every venue the user has attended a concert at, and the total quantity of concerts the user has been in attendance for at that venue
         * At the bottom of the OffCanvas, is another button that will bring the user to search.html to search for additional concerts to add to their ISIL History. This was included here because it’s a natural next step to take if a user has just read through the entire list of venues in which they have ever attended a concert, and realizes that somewhere is missing from the list
-
-        ![I SAW IT LIVE EXPERIENCE DASHBOARD PAGE TOP 5 VENUES VISITED OFFCANVAS](https://user-images.githubusercontent.com/78568826/153443593-5af7b844-3495-4214-af2e-1202f5eb5277.png "I SAW IT LIVE EXPERIENCE DASHBOARD PAGE TOP 5 VENUES VISITED OFFCANVAS")
 
 ### **apology.html**
 ![I SAW IT LIVE ERROR PAGE](https://user-images.githubusercontent.com/78568826/153454315-b32bf9aa-0e96-4a93-b47f-5c6cf56a1ddf.png "I SAW IT LIVE ERROR PAGE")
