@@ -6,7 +6,7 @@
 <br>
 
 <p align="center">
-   <a href=href="www.youtube.com/watch?v=mmu7qPxe9-M"><img src="static/ISIL_Walkthrough_Still.png" alt="YouTube Video still of I SAW IT LIVE walkthrough video" width="50%" height="50%"><br>
+   <a href=href="www.youtube.com/watch?v=mmu7qPxe9-M"><img src="static/ISIL_Walkthrough_Still.png" alt="YouTube Video still of I SAW IT LIVE walkthrough video" width="50%" height="50%"></a><br>
 </p>
 
 I SAW IT LIVE (ISIL) is a personal concert tracker web application, providing users with a central hub to keep track of every concert they have ever attended. Beyond just a list, or even a datatable of all the concerts, ISIL also provides a dynamically-generated data dashboard specific to their lifetime live music experience.
